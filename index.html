@@ -55,11 +55,16 @@
         .gov-logo {
             font-size: 32px;
             font-weight: bold;
+            display: flex;
         }
 
-        .gov-g { color: #00A859; } /* Verde */
-        .gov-dot { color: #003399; } /* Azul */
-        .gov-br { color: #FCCC04; } /* Amarelo */
+        /* Cores Específicas do Logo gov.br */
+        .gov-letra-g { color: #003399; } /* Azul */
+        .gov-letra-o { color: #FCCC04; } /* Amarelo */
+        .gov-letra-v { color: #00A859; } /* Verde */
+        .gov-ponto   { color: #003399; } /* Azul */
+        .gov-letra-b { color: #003399; } /* Azul */
+        .gov-letra-r { color: #FCCC04; } /* Amarelo */
 
         .site-title {
             font-size: 18px;
@@ -202,7 +207,7 @@
 
         .payment-body {
             padding: 20px;
-            flex-grow: 1; /* Faz o corpo ocupar o espaço disponível */
+            flex-grow: 1;
         }
 
         .payment-body h4 {
@@ -228,7 +233,7 @@
         .payment-footer {
             padding: 20px;
             border-top: 1px solid #e0e0e0;
-            background-color: #f9f9f9; /* Fundo levemente diferente para destacar a área do botão */
+            background-color: #f9f9f9;
             border-radius: 0 0 8px 8px;
         }
 
@@ -236,7 +241,7 @@
             display: block;
             width: 100%;
             padding: 15px;
-            background-color: #00A859; /* Verde para ação positiva/pagamento */
+            background-color: #00A859;
             color: white;
             text-align: center;
             font-size: 16px;
@@ -247,8 +252,9 @@
         }
 
         .btn-pagar:hover {
-            background-color: #008a47; /* Tom mais escuro no hover */
+            background-color: #008a47;
             text-decoration: none;
+            color: white; /* Garante que a cor do texto do botão continue branca no hover, sobrepondo o hover global dos links */
         }
 
     </style>
@@ -267,7 +273,12 @@
     <header class="header">
         <div class="logo-container">
             <div class="gov-logo">
-                <span class="gov-g">gov</span><span class="gov-dot">.</span><span class="gov-br">br</span>
+                <span class="gov-letra-g">g</span>
+                <span class="gov-letra-o">o</span>
+                <span class="gov-letra-v">v</span>
+                <span class="gov-ponto">.</span>
+                <span class="gov-letra-b">b</span>
+                <span class="gov-letra-r">r</span>
             </div>
             <div class="site-title">
                 Serviços e Informações do Brasil
@@ -275,7 +286,7 @@
         </div>
         <div class="header-actions">
             <span>🔍</span>
-            <a href="#">Entrar 👤</a>
+            <!-- A opção 'Entrar 👤' foi removida daqui -->
         </div>
     </header>
 
