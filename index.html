@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento MEI - gov.br</title>
+    <style>
+        /* Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* Fundo branco */
+            color: #003399; /* Letras em azul */
+        }
+
+        a {
+            color: #003399;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Topo e Acessibilidade */
+        .accessibility-bar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 20px;
+            font-size: 12px;
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Cabeçalho Principal */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .gov-logo {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .gov-g { color: #00A859; } /* Verde */
+        .gov-dot { color: #003399; } /* Azul */
+        .gov-br { color: #FCCC04; } /* Amarelo */
+
+        .site-title {
+            font-size: 18px;
+            border-left: 1px solid #e0e0e0;
+            padding-left: 15px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        /* Menu de Navegação Superior */
+        .top-nav {
+            display: flex;
+            gap: 30px;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            font-weight: bold;
+        }
+
+        .breadcrumbs {
+            padding: 15px 20px;
+            font-size: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        /* Layout Principal */
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 20px;
+            gap: 30px;
+        }
+
+        /* Menu Lateral Esquerdo */
+        .sidebar {
+            width: 250px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            height: fit-content;
+        }
+
+        .sidebar h3 {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .sidebar li.active {
+            border-left: 4px solid #003399;
+            background-color: #f0f8ff;
+            font-weight: bold;
+        }
+
+        /* Conteúdo Central */
+        .main-content {
+            flex: 1;
+        }
+
+        .main-content h1 {
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .main-content > p {
+            margin-bottom: 30px;
+        }
+
+        /* Cards do Conteúdo */
+        .card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .card-icon {
+            font-size: 32px;
+            background-color: #f0f8ff;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #003399;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .card p {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .card.warning {
+            border-left: 4px solid #FCCC04;
+            background-color: #fffdf5;
+        }
+
+        /* Painel Direito - Recibo e Botão de Pagamento */
+        .payment-panel {
+            width: 320px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            height: fit-content;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .payment-header {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .payment-header h3 {
+            margin-bottom: 5px;
+        }
+
+        .payment-header small {
+            font-size: 11px;
+        }
+
+        .payment-body {
+            padding: 20px;
+            flex-grow: 1; /* Faz o corpo ocupar o espaço disponível */
+        }
+
+        .payment-body h4 {
+            margin-bottom: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 13px;
+        }
+
+        .data-row.highlight strong {
+            color: #003399;
+        }
+
+        /* Estilos do Botão de Pagamento */
+        .payment-footer {
+            padding: 20px;
+            border-top: 1px solid #e0e0e0;
+            background-color: #f9f9f9; /* Fundo levemente diferente para destacar a área do botão */
+            border-radius: 0 0 8px 8px;
+        }
+
+        .btn-pagar {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #00A859; /* Verde para ação positiva/pagamento */
+            color: white;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-pagar:hover {
+            background-color: #008a47; /* Tom mais escuro no hover */
+            text-decoration: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Acessibilidade -->
+    <div class="accessibility-bar">
+        <a href="#">Ir para o conteúdo</a>
+        <a href="#">Ir para o menu</a>
+        <a href="#">Ir para a busca</a>
+        <a href="#">Ir para o rodapé</a>
+    </div>
+
+    <!-- Cabeçalho Principal -->
+    <header class="header">
+        <div class="logo-container">
+            <div class="gov-logo">
+                <span class="gov-g">gov</span><span class="gov-dot">.</span><span class="gov-br">br</span>
+            </div>
+            <div class="site-title">
+                Serviços e Informações do Brasil
+            </div>
+        </div>
+        <div class="header-actions">
+            <span>🔍</span>
+            <a href="#">Entrar 👤</a>
+        </div>
+    </header>
+
+    <!-- Menu de Navegação -->
+    <nav class="top-nav">
+        <a href="#">Órgãos do Governo</a>
+        <a href="#">Acesso à Informação</a>
+        <a href="#">Legislação</a>
+        <a href="#">Acessibilidade</a>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        Página Inicial > Serviços > Empreendedor > Simples Nacional > Pagamento MEI
+    </div>
+
+    <!-- Container Principal -->
+    <div class="container">
+        
+        <!-- Sidebar Esquerda -->
+        <aside class="sidebar">
+            <h3>Empreendedor</h3>
+            <ul>
+                <li>Abertura de Empresas</li>
+                <li>Redesim</li>
+                <li>MEI - Microempreendedor</li>
+                <li>Nota Fiscal Eletrônica</li>
+                <li>Certificado Digital</li>
+                <li>Compras Governamentais</li>
+                <li class="active">Simples Nacional</li>
+            </ul>
+        </aside>
+
+        <!-- Conteúdo Central -->
+        <main class="main-content">
+            <h1>Pagamento Simples Nacional - MEI</h1>
+            <p>Regularize os débitos do Microempreendedor Individual</p>
+
+            <div class="card">
+                <div class="card-icon">📋</div>
+                <div>
+                    <h3>DAS-MEI - Documento de Arrecadação</h3>
+                    <p>Emita e pague o Documento de Arrecadação do Simples Nacional para Microempreendedor Individual</p>
+                </div>
+            </div>
+
+            <div class="card warning">
+                <div class="card-icon" style="border-color: #FCCC04; background-color: #fff; color: #FCCC04;">⚠️</div>
+                <div>
+                    <h3>Aviso de Pendência</h3>
+                    <p>Identificamos débitos em seu cadastro MEI. A regularização é necessária para manter o CNPJ ativo e continuar utilizando os serviços digitais do governo federal.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Painel Direito de Pagamento -->
+        <aside class="payment-panel">
+            <div class="payment-header">
+                <h3>💳 Recolhimento MEI</h3>
+                <small>🔒 Ambiente Seguro • SSL 256-bit</small>
+            </div>
+            <div class="payment-body">
+                <h4>📌 DADOS DO DÉBITO</h4>
+                
+                <div class="data-row">
+                    <span>Tributo:</span>
+                    <strong>Simples Nacional - MEI</strong>
+                </div>
+                
+                <div class="data-row">
+                    <span>Período:</span>
+                    <strong>Janeiro a Junho/2026</strong>
+                </div>
+                
+                <div class="data-row highlight">
+                    <span>Vencimento:</span>
+                    <strong>15/07/2026</strong>
+                </div>
+                
+                <div class="data-row">
+                    <span>Protocolo:</span>
+                    <strong>SIMEI-2026/9876543</strong>
+                </div>
+            </div>
+            
+            <!-- ÁREA DO BOTÃO DE PAGAMENTO -->
+            <div class="payment-footer">
+                <!-- SUBSTITUA 'COLOQUE_SEU_LINK_AQUI' PELO SEU LINK DE CHECKOUT OU PIX -->
+                <a href="COLOQUE_SEU_LINK_AQUI" class="btn-pagar" target="_blank">
+                    PAGAR AGORA
+                </a>
+            </div>
+        </aside>
+
+    </div>
+
+</body>
+</html>
