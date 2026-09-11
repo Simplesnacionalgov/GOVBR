@@ -178,15 +178,6 @@
             align-items: flex-start;
         }
 
-        .card-icon {
-            font-size: 32px;
-            background-color: #f0f8ff;
-            padding: 10px;
-            border-radius: 8px;
-            border: 1px solid #155BCB; 
-            flex-shrink: 0;
-        }
-
         .card h3 {
             margin-bottom: 10px;
             font-size: 18px;
@@ -199,8 +190,11 @@
         }
 
         .card.warning {
-            border-left: 4px solid #FCCC04;
-            background-color: #fffdf5;
+            border-left: 5px solid #cc8800;
+            background-color: #fffdf0;
+            border-top: 1px solid #e0e0e0;
+            border-right: 1px solid #e0e0e0;
+            border-bottom: 1px solid #e0e0e0;
         }
 
         /* Painel Direito - Recibo e Botão de Pagamento */
@@ -405,7 +399,7 @@
                 <a href="#">Participe</a>
             </div>
             <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
-                <a href="#" class="btn-gov-shortcut"><span>⊞</span> Atalhos gov.br</a>
+                <a href="#" class="btn-gov-shortcut">Atalhos gov.br</a>
             </div>
         </div>
     </header>
@@ -437,16 +431,7 @@
             <h1>Pagamento Simples Nacional - MEI</h1>
             <p>Regularize os débitos do Microempreendedor Individual</p>
 
-            <div class="card">
-                <div class="card-icon">📋</div>
-                <div>
-                    <h3>DAS-MEI - Documento de Arrecadação</h3>
-                    <p>Emita e pague o Documento de Arrecadação do Simples Nacional para Microempreendedor Individual</p>
-                </div>
-            </div>
-
             <div class="card warning">
-                <div class="card-icon" style="border-color: #FCCC04; background-color: #fff; color: #FCCC04;">⚠️</div>
                 <div>
                     <h3>Aviso de Pendência</h3>
                     <p>Identificamos débitos em seu cadastro MEI. A regularização é necessária para manter o CNPJ ativo e continuar utilizando os serviços digitais do governo federal.</p>
@@ -457,8 +442,8 @@
         <!-- Painel Direito de Pagamento -->
         <aside class="payment-panel">
             <div class="payment-header">
-                <h3>💳 Recolhimento MEI</h3>
-                <small>🔒 Ambiente Seguro • SSL 256-bit</small>
+                <h3>Recolhimento MEI</h3>
+                <small>Ambiente Seguro • SSL 256-bit</small>
             </div>
             
             <div class="payment-body">
@@ -469,7 +454,7 @@
                     <div class="value-amount">R$ 80,00</div>
                 </div>
 
-                <h4>📌 COMO PAGAR</h4>
+                <h4>COMO PAGAR</h4>
                 
                 <ul class="step-list">
                     <li class="step-item">
