@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagamento MEI - gov.br</title>
+    <!-- Tailwind CSS para o Modal e elementos Pix -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* Estilos Globais */
         * {
@@ -315,6 +317,7 @@
             border-radius: 5px;
             text-decoration: none;
             transition: background-color 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-pagar:hover {
@@ -463,11 +466,11 @@
                     </li>
                     <li class="step-item">
                         <div class="step-number">2</div>
-                        <div class="step-text">Você será redirecionado para o ambiente de checkout seguro.</div>
+                        <div class="step-text">Escaneie o QR Code ou copie o código Pix exibido na tela.</div>
                     </li>
                     <li class="step-item">
                         <div class="step-number">3</div>
-                        <div class="step-text">Escolha a sua forma de pagamento preferida (Pix ou Boleto).</div>
+                        <div class="step-text">Pague através do aplicativo do seu banco.</div>
                     </li>
                     <li class="step-item">
                         <div class="step-number">4</div>
@@ -478,13 +481,78 @@
             
             <!-- ÁREA DO BOTÃO DE PAGAMENTO -->
             <div class="payment-footer">
-                <a href="https://invoice.infinitepay.io/simplesnacionalmei/ggoL1kYnfq" class="btn-pagar" target="_blank">
+                <button onclick="openPixModal(event)" class="btn-pagar">
                     PAGAR AGORA
-                </a>
+                </button>
             </div>
         </aside>
 
     </div>
 
+    <!-- MODAL DE PAGAMENTO PIX -->
+    <div id="pixModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" style="display: none;">
+        <div class="bg-white w-full max-w-md p-6 rounded-2xl shadow-md text-center relative">
+            <!-- Botão de Fechar Modal -->
+            <button onclick="closePixModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 font-bold text-xl">&times;</button>
+            
+            <h1 class="text-xl font-bold text-gray-800 mb-1">Pagamento via Pix</h1>
+            <p class="text-sm text-gray-500 mb-6">Escaneie o QR Code ou copie o código abaixo</p>
+            
+            <!-- Área do QR Code -->
+            <div class="flex justify-center mb-6">
+                <div class="border-2 border-dashed border-gray-200 p-3 rounded-xl bg-gray-50">
+                    <!-- QR Code gerado automaticamente baseado no link de pagamento -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://invoice.infinitepay.io/simplesnacionalmei/ggoL1kYnfq" alt="QR Code Pix" class="w-48 h-48 object-contain">
+                </div>
+            </div>
+
+            <!-- Área do Pix Copia e Cola -->
+            <div class="text-left">
+                <label class="block text-xs font-semibold text-gray-600 uppercase mb-1">Link / Código Pix</label>
+                <div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg p-2">
+                    <input type="text" id="pixCode" value="https://invoice.infinitepay.io/simplesnacionalmei/ggoL1kYnfq" readonly class="bg-transparent w-full text-xs text-gray-700 outline-none truncate mr-2">
+                    <button onclick="copyPix()" id="copyButton" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2 rounded-md transition duration-200 shrink-0">
+                        Copiar
+                    </button>
+                </div>
+                <span id="copyFeedback" class="text-xs text-emerald-600 mt-1.5 hidden font-medium">Código copiado com sucesso!</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script de controle do Modal e Copia e Cola -->
+    <script>
+        function openPixModal(event) {
+            event.preventDefault();
+            document.getElementById('pixModal').style.display = 'flex';
+        }
+
+        function closePixModal() {
+            document.getElementById('pixModal').style.display = 'none';
+        }
+
+        function copyPix() {
+            const pixInput = document.getElementById('pixCode');
+            pixInput.select();
+            pixInput.setSelectionRange(0, 99999); // Suporte para celulares
+            
+            navigator.clipboard.writeText(pixInput.value).then(() => {
+                const feedback = document.getElementById('copyFeedback');
+                const button = document.getElementById('copyButton');
+                
+                feedback.classList.remove('hidden');
+                button.textContent = 'Copiado!';
+                button.classList.remove('bg-emerald-600', 'hover:bg-emerald-700');
+                button.classList.add('bg-gray-800');
+
+                setTimeout(() => {
+                    feedback.classList.add('hidden');
+                    button.textContent = 'Copiar';
+                    button.classList.remove('bg-gray-800');
+                    button.classList.add('bg-emerald-600', 'hover:bg-emerald-700');
+                }, 3000);
+            });
+        }
+    </script>
 </body>
 </html>
