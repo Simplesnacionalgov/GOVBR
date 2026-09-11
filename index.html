@@ -222,15 +222,38 @@
             gap: 10px;
         }
 
-        .data-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            font-size: 13px;
+        /* Estilos para o Passo a Passo */
+        .step-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 15px;
         }
 
-        .data-row.highlight strong {
-            color: #155BCB; /* Destaque no azul mais claro */
+        .step-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background-color: #155BCB;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .step-text {
+            font-size: 13px;
+            line-height: 1.4;
+            color: #155BCB;
         }
 
         /* Estilos do Botão de Pagamento */
@@ -352,28 +375,28 @@
                 <h3>💳 Recolhimento MEI</h3>
                 <small>🔒 Ambiente Seguro • SSL 256-bit</small>
             </div>
+            
             <div class="payment-body">
-                <h4>📌 DADOS DO DÉBITO</h4>
+                <h4>📌 COMO PAGAR</h4>
                 
-                <div class="data-row">
-                    <span>Tributo:</span>
-                    <strong>Simples Nacional - MEI</strong>
-                </div>
-                
-                <div class="data-row">
-                    <span>Período:</span>
-                    <strong>Janeiro a Junho/2026</strong>
-                </div>
-                
-                <div class="data-row highlight">
-                    <span>Vencimento:</span>
-                    <strong>15/07/2026</strong>
-                </div>
-                
-                <div class="data-row">
-                    <span>Protocolo:</span>
-                    <strong>SIMEI-2026/9876543</strong>
-                </div>
+                <ul class="step-list">
+                    <li class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-text">Clique no botão verde "PAGAR AGORA" logo abaixo.</div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-text">Você será redirecionado para o ambiente de checkout seguro.</div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-text">Escolha a sua forma de pagamento preferida (Pix ou Boleto).</div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-text">Conclua a transação para regularizar seus débitos MEI.</div>
+                    </li>
+                </ul>
             </div>
             
             <!-- ÁREA DO BOTÃO DE PAGAMENTO -->
