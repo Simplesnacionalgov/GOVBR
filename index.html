@@ -29,9 +29,9 @@
 
         /* Topo e Acessibilidade */
         .accessibility-bar {
-            background-color: #ffffff;
+            background-color: #f5f5f5;
             border-bottom: 1px solid #e0e0e0;
-            padding: 10px 20px;
+            padding: 8px 20px;
             font-size: 12px;
             display: flex;
             gap: 15px;
@@ -43,7 +43,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
+            padding: 15px 20px;
             border-bottom: 1px solid #e0e0e0;
             flex-wrap: wrap;
             gap: 15px;
@@ -72,21 +72,52 @@
         .gov-letra-b { color: #155BCB; }
         .gov-letra-r { color: #FCCC04; }
 
-        .site-title {
-            font-size: 18px;
-            border-left: 1px solid #e0e0e0;
-            padding-left: 15px;
-            font-weight: bold;
-        }
-
-        .header-actions {
+        .header-right {
             display: flex;
-            gap: 20px;
             align-items: center;
-            font-weight: bold;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
-        /* Menu de Navegação Superior */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            flex-wrap: wrap;
+        }
+
+        .btn-gov-shortcut {
+            border: 1px solid #155BCB;
+            border-radius: 20px;
+            padding: 6px 15px;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-gov-login {
+            background-color: #155BCB;
+            color: white;
+            border-radius: 20px;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-gov-login:hover {
+            background-color: #0d439b;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Menu de Navegação / Título da Seção */
         .top-nav {
             display: flex;
             gap: 30px;
@@ -94,6 +125,7 @@
             border-bottom: 1px solid #e0e0e0;
             font-weight: bold;
             flex-wrap: wrap;
+            font-size: 18px;
         }
 
         /* Layout Principal */
@@ -117,6 +149,7 @@
         .sidebar h3 {
             padding: 15px;
             border-bottom: 1px solid #e0e0e0;
+            font-size: 16px;
         }
 
         .sidebar ul {
@@ -149,6 +182,7 @@
 
         .main-content > p {
             margin-bottom: 30px;
+            font-size: 15px;
         }
 
         /* Cards do Conteúdo */
@@ -179,6 +213,7 @@
         .card p {
             font-size: 14px;
             line-height: 1.5;
+            color: #333;
         }
 
         .card.warning {
@@ -205,10 +240,12 @@
 
         .payment-header h3 {
             margin-bottom: 5px;
+            font-size: 16px;
         }
 
         .payment-header small {
             font-size: 11px;
+            color: #666;
         }
 
         .payment-body {
@@ -314,12 +351,45 @@
         @media (max-width: 992px) {
             .container {
                 flex-direction: column;
+                padding: 0 10px;
             }
             .sidebar {
                 width: 100%;
             }
             .payment-panel {
                 width: 100%;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .accessibility-bar {
+                display: none;
+            }
+            .nav-links {
+                gap: 10px;
+                font-size: 12px;
+            }
+            .top-nav {
+                font-size: 15px;
+                padding: 12px 15px;
+            }
+            .main-content h1 {
+                font-size: 22px;
+            }
+            .card {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .value-amount {
+                font-size: 24px;
             }
         }
     </style>
@@ -345,21 +415,23 @@
                 <span class="gov-letra-b">b</span>
                 <span class="gov-letra-r">r</span>
             </div>
-            <div class="site-title">
-                Serviços e Informações do Brasil
-            </div>
         </div>
-        <div class="header-actions">
-            <span>🔍</span>
+        <div class="header-right">
+            <div class="nav-links">
+                <a href="#">Institucional ▾</a>
+                <a href="#">Acessibilidade</a>
+                <a href="#">Participe</a>
+            </div>
+            <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                <a href="#" class="btn-gov-shortcut"><span>⊞</span> Atalhos gov.br</a>
+                <a href="#" class="btn-gov-login"><span>👤</span> Entrar com gov.br</a>
+            </div>
         </div>
     </header>
 
-    <!-- Menu de Navegação -->
+    <!-- Menu de Navegação Superior -->
     <nav class="top-nav">
-        <a href="#">Órgãos do Governo</a>
-        <a href="#">Acesso à Informação</a>
-        <a href="#">Legislação</a>
-        <a href="#">Acessibilidade</a>
+        <a href="#">Serviços e Informações do Brasil</a>
     </nav>
 
     <!-- Container Principal -->
