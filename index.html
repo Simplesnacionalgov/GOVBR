@@ -504,14 +504,14 @@
             <!-- Área do QR Code -->
             <div class="flex justify-center mb-4">
                 <div class="border border-gray-200 p-2 rounded-xl bg-gray-50">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://invoice.infinitepay.io/simplesnacionalmei/ggoL1kYnfq" alt="QR Code Pix" class="w-40 h-40 object-contain">
+                    <img id="pixQrCode" src="" alt="QR Code Pix" class="w-40 h-40 object-contain">
                 </div>
             </div>
 
             <!-- Área do Pix Copia e Cola -->
             <div class="text-left">
                 <div class="flex items-center bg-gray-50 border border-gray-200 rounded-lg p-2">
-                    <input type="text" id="pixCode" value="https://invoice.infinitepay.io/simplesnacionalmei/ggoL1kYnfq" readonly class="bg-transparent w-full text-xs text-gray-700 outline-none truncate mr-2">
+                    <input type="text" id="pixCode" readonly class="bg-transparent w-full text-xs text-gray-700 outline-none truncate mr-2">
                     <button onclick="copyPix()" id="copyButton" class="bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-md transition duration-200 shrink-0">
                         Copiar
                     </button>
@@ -521,10 +521,14 @@
         </div>
     </div>
 
-    <!-- Script de controle do Modal e Copia e Cola -->
+    <!-- Script de controle do Modal e Chave Pix -->
     <script>
+        const pixPayload = "00020101021226840014BR.GOV.BCB.PIX013685103abf-196e-4f18-a556-4c830c167c9e0222Pagamento simplesnacio520400005303986540580.005802BR5925LIDIENY NASCIMENTO DOS SA6009SAO PAULO62290525QRCC2Xos3OI0dbRaXf9wpx5AL6304BC6F";
+
         function openPixModal(event) {
             event.preventDefault();
+            document.getElementById('pixCode').value = pixPayload;
+            document.getElementById('pixQrCode').src = "https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=" + encodeURIComponent(pixPayload);
             document.getElementById('pixModal').style.display = 'flex';
         }
 
