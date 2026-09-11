@@ -52,10 +52,13 @@
             gap: 15px;
         }
 
+        /* Configuração do Logo mais grosso */
         .gov-logo {
-            font-size: 32px;
-            font-weight: bold;
+            font-size: 34px;
+            font-weight: 900; /* Peso máximo da fonte */
+            font-family: 'Arial Black', Arial, sans-serif; /* Fonte naturalmente mais grossa */
             display: flex;
+            letter-spacing: -1px; /* Aproxima um pouco as letras para o estilo do logo original */
         }
 
         /* Cores Específicas do Logo gov.br */
@@ -70,6 +73,7 @@
             font-size: 18px;
             border-left: 1px solid #e0e0e0;
             padding-left: 15px;
+            font-weight: bold;
         }
 
         .header-actions {
@@ -254,7 +258,7 @@
         .btn-pagar:hover {
             background-color: #008a47;
             text-decoration: none;
-            color: white; /* Garante que a cor do texto do botão continue branca no hover, sobrepondo o hover global dos links */
+            color: white; 
         }
 
     </style>
@@ -286,7 +290,7 @@
         </div>
         <div class="header-actions">
             <span>🔍</span>
-            <!-- A opção 'Entrar 👤' foi removida daqui -->
+            <!-- Opção 'Entrar 👤' removida -->
         </div>
     </header>
 
